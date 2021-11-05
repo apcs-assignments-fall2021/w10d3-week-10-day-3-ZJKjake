@@ -61,7 +61,19 @@ public class MyMain {
     // Takes two **sorted** ArrayLists and merges them together into one big sorted ArrayList
     // (Hint: you may find it useful to use a while loop, as well as the remove() method).
     public static ArrayList<Integer> merge(ArrayList<Integer> list1, ArrayList<Integer> list2) {
-        return (ArrayList<Integer>) new ArrayList<Integer>() { { addAll(list1); addAll(list2); } }.stream().sorted().collect(Collectors.toList());
+        for (int i=0;i<list2.size();i++){
+            list1.add(list2.get(i));
+        }
+        for (int i=0;i<list1.size();i++){
+            for (int j=i+1;j<list1.size();j++){
+                if (list1.get(j)<list1.get(i)){
+                    int x=list1.get(i);
+                    list1.set(i,list1.get(j));
+                    list1.set(j,x);
+                }
+            }
+        }
+        return list1;
     }
 
 
