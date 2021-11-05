@@ -1,22 +1,36 @@
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class MyMain {
 
     // Counts the number of words that starts with 'a' or 'A'
     public static int startsWithA(ArrayList<String> list) {
-        // REPLACE WITH YOUR CODE
-        return 0;
+        int count=0;
+        for (String s : list) {
+            if ((s.charAt(0)) == 65 || (s.charAt(0)) == 97) {
+                count += 1;
+            }
+        }
+        return count;
     }
 
     // Adds a ! to each element in the ArrayList, returns an ArrayList
     public static ArrayList<String> makeExciting(ArrayList<String> list) {
-        // REPLACE WITH YOUR CODE
-        return null;
+        for (int i=0;i<list.size();i++){
+            list.set(i,list.get(i)+"!");
+        }
+        return list;
     }
 
     // Returns true if there is an int that appears in both lists
     public static boolean checkDuplicates(ArrayList<Integer> list1, ArrayList<Integer> list2) {
-        // REPLACE WITH YOUR CODE
+        for (Integer value : list1) {
+            for (Integer integer : list2) {
+                if (value == integer) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -25,22 +39,29 @@ public class MyMain {
 
     // Counts the number of odd numbers in list
     public static int countOdd(ArrayList<Integer> list) {
-        // REPLACE WITH YOUR CODE
-        return 0;
+        int counter = 0;
+        for (int i : list) {
+            if (i % 2 != 0) {
+                counter++;
+            }
+        }
+        return counter;
     }
 
     // Takes an int[] as input and returns the equivalent ArrayList<Integer>
     // Unlike the other methods, the input is an array!
     public static ArrayList<Integer> convertToArrayList(int[] arr) {
-        // REPLACE WITH YOUR CODE
-        return null;
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i : arr) {
+            result.add(i);
+        }
+        return result;
     }
 
     // Takes two **sorted** ArrayLists and merges them together into one big sorted ArrayList
     // (Hint: you may find it useful to use a while loop, as well as the remove() method).
     public static ArrayList<Integer> merge(ArrayList<Integer> list1, ArrayList<Integer> list2) {
-        // REPLACE WITH YOUR CODE
-        return null;
+        return (ArrayList<Integer>) new ArrayList<Integer>() { { addAll(list1); addAll(list2); } }.stream().sorted().collect(Collectors.toList());
     }
 
 
